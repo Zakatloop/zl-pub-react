@@ -1,13 +1,88 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 
 export default function Home() {
+    const [topBars, setTopBars] = useState([]);
+    const [ourPrograms, setOurPrograms] = useState([]);
+    // const [loading, setLoading] = useState(false);
+
+    const fetchTopBars = async () => {
+        // setLoading(true);
+
+        try {
+            const { data }  = await axios.get(`http://localhost:3000/top-bar`, {
+                // headers: {
+                //     'authorization': `Bearer ` + localStorage.getItem('access_token'),
+                // }
+            });
+            // console.log(data, 'data');
+    
+            // let newTopBars = [...topBars];
+            // data.map(el => {
+            //     // newTopBars.push(el.Club);
+            // })
+
+            setTopBars(data);
+        } catch (error) {
+            // Swal.fire({
+            //     title: 'Failed!',
+            //     text: error.response,
+            //     icon: 'error',
+            //     confirmButtonText: 'Ok'
+            // });
+        } finally {
+            // setTimeout(() => {
+            //     setLoading(false);
+            // }, 500);
+        }
+    }
+
+    const fetchOurPrograms = async () => {
+        // setLoading(true);
+
+        try {
+            const { data }  = await axios.get(`http://localhost:3000/our-program`, {
+                // headers: {
+                //     'authorization': `Bearer ` + localStorage.getItem('access_token'),
+                // }
+            });
+            console.log(data, 'setOurPrograms');
+    
+            // let newTopBars = [...topBars];
+            // data.map(el => {
+            //     // newTopBars.push(el.Club);
+            // })
+
+            setOurPrograms(data);
+        } catch (error) {
+            // Swal.fire({
+            //     title: 'Failed!',
+            //     text: error.response,
+            //     icon: 'error',
+            //     confirmButtonText: 'Ok'
+            // });
+        } finally {
+            // setTimeout(() => {
+            //     setLoading(false);
+            // }, 500);
+        }
+    }
+
+
+    useEffect(() => {
+        fetchTopBars();
+        fetchOurPrograms();
+
+    }, []);
     return (
         <>
             {/* Headers */}
             <div className="flex flex-row w-full px-8 py-4 bg-white sticky top-0 justify-center items-center gap-14 z-50">
                 <div className="flex flex-row w-1/5 h-full justify-evenly items-center mt-2">
+                
                     <img
-                        src="/images/zl_logo4.png"
+                        src={ topBars[0]?.documents[0]?.dir }
                         alt="ZakatLoop Logo"
                         width="94"
                         height="94"
@@ -31,8 +106,22 @@ export default function Home() {
                 </div>
             </div> */}
                 <div className="flex flex-row w-4/5 justify-end items-end gap-2">
-                    <div className="flex flex-row px-4 py-2 cursor-pointer hover:text-green-700 text-green-600 rounded-full justify-center items-center transition duration-700 font-semibold hover:font-bold">
-                        <span className="text-lg">Tentang Kami</span>
+                    {
+                        topBars.map((el, idx) => {
+                            if (idx > 0) {
+                                return (
+                                    <div key={idx} className="flex flex-row px-4 py-2 cursor-pointer hover:text-green-700 text-green-600 rounded-full justify-center items-center transition duration-700 font-semibold hover:font-bold">
+                                        <span className="text-lg">{ el.content }</span>
+                                    </div>
+                                );
+                            } else {
+                                return null;
+                            }
+                        })
+                    }
+
+                    {/* <div className="flex flex-row px-4 py-2 cursor-pointer hover:text-green-700 text-green-600 rounded-full justify-center items-center transition duration-700 font-semibold hover:font-bold">
+                        <span className="text-lg">Tentang Kami </span>
                     </div>
                     <div className="flex flex-row px-4 py-2 cursor-pointer hover:text-green-700 text-green-600 rounded-full justify-center items-center transition duration-700 font-semibold hover:font-bold">
                         <span className="text-lg">Our Values</span>
@@ -42,7 +131,7 @@ export default function Home() {
                     </div>
                     <div className="flex flex-row px-4 py-2 cursor-pointer hover:text-green-700 text-green-600 rounded-full justify-center items-center transition duration-700 font-semibold hover:font-bold">
                         <span className="text-lg">Kontak Kami</span>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
@@ -56,56 +145,56 @@ export default function Home() {
                     />
                 </div>
                 <div className="flex items-center justify-center w-1/2">
-                    <div class="relative h-64 w-64 bg-green-600 rounded-full">
-                        <div class="absolute h-32 w-32 -left-12 -top-4 bg-purple-400 shadow-xl rounded-md">
+                    <div className="relative h-64 w-64 bg-green-600 rounded-full">
+                        <div className="absolute h-32 w-32 -left-12 -top-4 bg-purple-400 shadow-xl rounded-md">
                             <img
                                 src="/images/tf1.1.jpg"
                                 className="w-full h-full shadow-xl rounded-md"
                             />
                         </div>
-                        <div class="absolute -z-10 h-32 w-32 -left-40 bottom-14 bg-purple-400 shadow-xl rounded-md">
+                        <div className="absolute -z-10 h-32 w-32 -left-40 bottom-14 bg-purple-400 shadow-xl rounded-md">
                             <img
                                 src="/images/sf1.1.jpg"
                                 className="w-full h-full shadow-xl rounded-md"
                             />
                         </div>
-                        <div class="absolute h-32 w-32 z-20 left-36 -top-12 bg-pink-400 shadow-xl rounded-md">
+                        <div className="absolute h-32 w-32 z-20 left-36 -top-12 bg-pink-400 shadow-xl rounded-md">
                             <img
                                 src="/images/tf1.2.jpg"
                                 className="w-full h-full shadow-xl rounded-md"
                             />
                         </div>
-                        <div class="absolute h-32 w-32 left-72 -top-1 z-10 bg-pink-400 shadow-xl rounded-md">
+                        <div className="absolute h-32 w-32 left-72 -top-1 z-10 bg-pink-400 shadow-xl rounded-md">
                             <img
                                 src="/images/sf2.3.jpg"
                                 className="w-full h-full shadow-xl rounded-md"
                             />
                         </div>
-                        <div class="absolute h-32 w-32 z-10 left-16 top-16 bg-pink-400 shadow-xl rounded-md">
+                        <div className="absolute h-32 w-32 z-10 left-16 top-16 bg-pink-400 shadow-xl rounded-md">
                             <img
                                 src="/images/tf1.3.jpg"
                                 className="w-full h-full shadow-xl rounded-md"
                             />
                         </div>
-                        <div class="absolute h-32 w-32 left-52 bottom-6 bg-pink-400 shadow-xl rounded-md">
+                        <div className="absolute h-32 w-32 left-52 bottom-6 bg-pink-400 shadow-xl rounded-md">
                             <img
                                 src="/images/tf1.4.jpg"
                                 className="w-full h-full shadow-xl rounded-md"
                             />
                         </div>
-                        <div class="absolute h-32 w-32 left-36 -bottom-28 bg-pink-400 shadow-xl rounded-md">
+                        <div className="absolute h-32 w-32 left-36 -bottom-28 bg-pink-400 shadow-xl rounded-md">
                             <img
                                 src="/images/tf1.5.jpg"
                                 className="w-full h-full shadow-xl rounded-md"
                             />
                         </div>
-                        <div class="absolute h-32 w-32 right-36 -bottom-8 bg-pink-400 shadow-xl rounded-md">
+                        <div className="absolute h-32 w-32 right-36 -bottom-8 bg-pink-400 shadow-xl rounded-md">
                             <img
                                 src="/images/sf2.1.jpg"
                                 className="w-full h-full shadow-xl rounded-md"
                             />
                         </div>
-                        <div class="absolute h-32 w-32 -left-40 -bottom-24 bg-pink-400 shadow-xl rounded-md">
+                        <div className="absolute h-32 w-32 -left-40 -bottom-24 bg-pink-400 shadow-xl rounded-md">
                             <img
                                 src="/images/sf2.2.jpg"
                                 className="w-full h-full shadow-xl rounded-md"
@@ -129,32 +218,32 @@ export default function Home() {
                 />
               </div>
               <div className="flex justify-end w-2/3">
-                <div class="relative h-64 w-64 bg-green-600 rounded-full">
-                  <div class="absolute h-32 w-32 -left-12 -top-4 bg-purple-400 shadow-xl rounded-md">
+                <div className="relative h-64 w-64 bg-green-600 rounded-full">
+                  <div className="absolute h-32 w-32 -left-12 -top-4 bg-purple-400 shadow-xl rounded-md">
                     <img
                       src="/images/tf1.1.jpg"
                       className="w-full h-full shadow-xl rounded-md"
                     />
                   </div>
-                  <div class="absolute h-32 w-32 left-24 -top-12 bg-pink-400 shadow-xl rounded-md">
+                  <div className="absolute h-32 w-32 left-24 -top-12 bg-pink-400 shadow-xl rounded-md">
                     <img
                       src="/images/tf1.2.jpg"
                       className="w-full h-full shadow-xl rounded-md"
                     />
                   </div>
-                  <div class="absolute h-32 w-32 left-16 top-16 bg-pink-400 shadow-xl rounded-md">
+                  <div className="absolute h-32 w-32 left-16 top-16 bg-pink-400 shadow-xl rounded-md">
                     <img
                       src="/images/tf1.3.jpg"
                       className="w-full h-full shadow-xl rounded-md"
                     />
                   </div>
-                  <div class="absolute h-32 w-32 left-52 bottom-6 bg-pink-400 shadow-xl rounded-md">
+                  <div className="absolute h-32 w-32 left-52 bottom-6 bg-pink-400 shadow-xl rounded-md">
                     <img
                       src="/images/tf1.4.jpg"
                       className="w-full h-full shadow-xl rounded-md"
                     />
                   </div>
-                  <div class="absolute h-32 w-32 right-36 -bottom-8 bg-pink-400 shadow-xl rounded-md">
+                  <div className="absolute h-32 w-32 right-36 -bottom-8 bg-pink-400 shadow-xl rounded-md">
                     <img
                       src="/images/sf2.1.jpg"
                       className="w-full h-full shadow-xl rounded-md"
@@ -259,117 +348,56 @@ export default function Home() {
 
             {/* OKA ADD NEW */}
 
-            <div class="bg-green-400">
-                <section class="relative pt-24 pb-36 overflow-hidden">
+            <div className="bg-green-400">
+                <section className="relative pt-24 pb-36 overflow-hidden">
                     <img
-                        class="absolute bottom-0 left-1/2 transform -translate-x-1/2"
+                        className="absolute bottom-0 left-1/2 transform -translate-x-1/2"
                         src="flaro-assets/images/contact/gradient.svg"
                         alt=""
                     />
-                    <div class="relative z-10 container px-4 mx-auto">
-                        <p class="mb-5 text-3xl md:text-6xl xl:text-8xl text-center font-bold font-heading tracking-px-n leading-none animate-bounce">
+                    <div className="relative z-10 container px-4 mx-auto">
+                        <p className="mb-5 text-3xl md:text-6xl xl:text-8xl text-center font-bold font-heading tracking-px-n leading-none animate-bounce">
                             Our Program
                         </p>
-                        <p class="mb-20 text-lg text-gray-600 text-center font-medium leading-normal md:max-w-lg mx-auto">
+                        <p className="mb-20 text-lg text-gray-600 text-center font-medium leading-normal md:max-w-lg mx-auto">
                             Lorem ipsum dolor sit amet, to the con adipiscing. Volutpat tempor
                             to the condimentum vitae vel purus.
                         </p>
 
                         {/* EACH MISSIONS START */}
-                        <div class="flex flex-wrap -m-3">
-                            <div class="w-full md:w-1/3 p-3">
-                                {/*  */}
-
-                                <div class="p-11 h-full text-center bg-white bg-opacity-90 border border-blueGray-100 rounded-xl shadow-11xl hover:scale-125 transition ease-in-out duration-300">
-                                    <div class="mb-6 relative mx-auto w-16 h-16 bg-green-700 border border-blueGray-200 rounded-full">
-                                        <div class="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                                            {/* <img> */}
+                        <div className="flex flex-wrap -m-3">
+                        {
+                            (() => {
+                                let elements = [];
+                                for (let index = 1; index < ourPrograms.length; index += 2) {
+                                    elements.push(
+                                        <div className="w-full md:w-1/3 p-3">
+                                            {/*  */}
+            
+                                            <div className="p-11 h-full text-center bg-white bg-opacity-90 border border-blueGray-100 rounded-xl shadow-11xl hover:scale-125 transition ease-in-out duration-300">
+                                                <div className="mb-6 relative mx-auto w-16 h-16 bg-green-700 border border-blueGray-200 rounded-full">
+                                                    <div className="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                                                        {/* <img> */}
+                                                    </div>
+                                                </div>
+                                                <h3 className="mb-3 text-xl font-bold font-heading leading-snug">
+                                                    { ourPrograms[index].content }
+                                                </h3>
+                                                <p className="font-medium max-w-xs mx-auto text-gray-600 leading-relaxed">
+                                                    { ourPrograms[index + 1].content }
+                                                </p>
+                                            </div>
+                                            {/*  */}
                                         </div>
-                                    </div>
-                                    <h3 class="mb-3 text-xl font-bold font-heading leading-snug">
-                                        Tech Fellowship Program
-                                    </h3>
-                                    <p class="font-medium max-w-xs mx-auto text-gray-600 leading-relaxed">
-                                        Lorem ipsum dolor sit amet, to the con adipiscing. Volutpat
-                                        tempor to the condimentum vitae vel purus.
-                                    </p>
-                                </div>
-                                {/*  */}
-                            </div>
+                                    );
+                                }
+                                return elements;
+                            })()
+                        }
+                        
+                           
 
-                            <div class="w-full md:w-1/3 p-3">
-                                {/*  */}
-                                <div class="p-11 h-full text-center bg-white bg-opacity-90 border border-blueGray-100 rounded-xl shadow-11xl hover:scale-125 transition ease-in-out duration-300">
-                                    <div class="mb-6 relative mx-auto w-16 h-16 bg-green-700 border border-blueGray-200 rounded-full">
-                                        <div class="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                                            {/* <svg
-                      width="32"
-                      height="33"
-                      viewbox="0 0 32 33"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4 7.16667C4 5.69391 5.19391 4.5 6.66667 4.5H11.039C11.6129 4.5 12.1224 4.86724 12.3039 5.4117L14.301 11.4029C14.5108 12.0324 14.2258 12.7204 13.6324 13.0172L10.6227 14.522C12.0923 17.7816 14.7184 20.4077 17.978 21.8773L19.4828 18.8676C19.7796 18.2742 20.4676 17.9892 21.0971 18.199L27.0883 20.1961C27.6328 20.3776 28 20.8871 28 21.461V25.8333C28 27.3061 26.8061 28.5 25.3333 28.5H24C12.9543 28.5 4 19.5457 4 8.5V7.16667Z"
-                        stroke="#4F46E5"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>
-                    </svg> */}
-                                        </div>
-                                    </div>
-                                    <h3 class="mb-3 text-xl font-bold font-heading leading-snug">
-                                        Student Fellowship
-                                    </h3>
-                                    <p class="font-medium max-w-xs mx-auto text-gray-600 leading-relaxed">
-                                        Lorem ipsum dolor sit amet, to the con adipiscing. Volutpat
-                                        tempor to the condimentum vitae vel purus.
-                                    </p>
-                                </div>
-                                {/*  */}
-                            </div>
-
-                            <div class="w-full md:w-1/3 p-3">
-                                {/*  */}
-                                <div class="p-11 h-full text-center bg-white bg-opacity-90 border border-blueGray-100 rounded-xl shadow-11xl transform hover:scale-125 transition ease-in-out duration-300">
-                                    <div class="mb-6 relative mx-auto w-16 h-16 bg-green-700 border border-blueGray-200 rounded-full">
-                                        <div class="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                                            {/* <svg
-                      width="32"
-                      height="33"
-                      viewbox="0 0 32 33"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M23.5431 22.7091C22.1797 24.0725 19.192 27.0602 17.4133 28.8389C16.6323 29.62 15.3693 29.6203 14.5883 28.8392C12.8393 27.0903 9.91373 24.1647 8.45818 22.7091C4.29259 18.5435 4.29259 11.7898 8.45818 7.62419C12.6238 3.4586 19.3775 3.4586 23.5431 7.62419C27.7087 11.7898 27.7087 18.5435 23.5431 22.7091Z"
-                        stroke="#4F46E5"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>
-                      <path
-                        d="M20.0007 15.1667C20.0007 17.3758 18.2098 19.1667 16.0007 19.1667C13.7915 19.1667 12.0007 17.3758 12.0007 15.1667C12.0007 12.9575 13.7915 11.1667 16.0007 11.1667C18.2098 11.1667 20.0007 12.9575 20.0007 15.1667Z"
-                        stroke="#4F46E5"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>
-                    </svg> */}
-                                        </div>
-                                    </div>
-                                    <h3 class="mb-3 text-xl font-bold font-heading leading-snug">
-                                        Mission
-                                    </h3>
-                                    <p class="font-medium max-w-xs mx-auto text-gray-600 leading-relaxed">
-                                        Lorem ipsum dolor sit amet, to the con adipiscing. Volutpat
-                                        tempor to the condimentum vitae vel purus.
-                                    </p>
-                                </div>
-
-                                {/*  */}
-                            </div>
+                           
                         </div>
                     </div>
                 </section>
@@ -378,59 +406,59 @@ export default function Home() {
          
 
             {/* PUBLIKASI */}
-            <section class="pt-24 pb-36 bg-white overflow-hidden">
-                <div class="container p-5 mx-auto">
-                    <h2 class="mb-4 text-5xl md:text-6xl text-center font-bold font-heading tracking-px-n leading-tight font-serif italic">
+            <section className="pt-24 pb-36 bg-white overflow-hidden">
+                <div className="container p-5 mx-auto">
+                    <h2 className="mb-4 text-5xl md:text-6xl text-center font-bold font-heading tracking-px-n leading-tight font-serif italic">
                         Laporan
                     </h2>
-                    <p class="mb-24 font-medium text-gray-600 text-center leading-relaxed md:max-w-lg mx-auto">
+                    <p className="mb-24 font-medium text-gray-600 text-center leading-relaxed md:max-w-lg mx-auto">
                         Lorem ipsum dolor sit amet, to the consectr adipiscing elit.
                         Volutpat tempor to the condimentum vitae vel purus.
                     </p>
                     {/* <a
-                          class="inline-block hover:text-blue-400 hover:underline"
+                          className="inline-block hover:text-blue-400 hover:underline"
                           href="#"
                         >
-                          <h3 class="text-xl font-semibold leading-normal">
+                          <h3 className="text-xl font-semibold leading-normal">
                             How life insurance helps you during financial
                             insolvency
                           </h3>
                         </a> */}
                 </div>
 
-                <div class="container px-4 mx-auto">
-                    <div class="flex flex-wrap -mx-4">
-                        <div class="w-full lg:w-1/3 px-4 mb-12 lg:mb-0">
-                            <div class="max-w-sm mx-auto">
+                <div className="container px-4 mx-auto">
+                    <div className="flex flex-wrap -mx-4">
+                        <div className="w-full lg:w-1/3 px-4 mb-12 lg:mb-0">
+                            <div className="max-w-sm mx-auto">
                                 <img
-                                    class="block w-full h-64 mb-6 object-cover  transform hover:scale-110 transition flip-in duration-500"
+                                    className="block w-full h-64 mb-6 object-cover  transform hover:scale-110 transition flip-in duration-500"
                                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1q17H2xR5oSo5VBiot_dCC9XOYDqskvdvyr0Rf8VYiTDrZoMcw4XoQVvoX85QEB7RMFs&usqp=CAU"
                                     alt=""
                                 />
-                                <span class="text-sm font-semibold uppercase text-gray-200">
+                                <span className="text-sm font-semibold uppercase text-gray-200">
                                     10 JUN 2022
                                 </span>
 
                                 <a
-                                    class="inline-block hover:text-blue-400 hover:underline"
+                                    className="inline-block hover:text-blue-400 hover:underline"
                                     href="#"
                                 >
-                                    <h3 class="font-heading font-medium text-lg mt-2 mb-4">
+                                    <h3 className="font-heading font-medium text-lg mt-2 mb-4">
                                         There are many variations of passages of Lorem Ipsum
                                         available
                                     </h3>
                                 </a>
 
-                                <p class="leading-7 mb-4">
+                                <p className="leading-7 mb-4">
                                     There are many variations of passages of Lorem Ipsum
                                     available.
                                 </p>
                                 {/* <a
-                  class="group inline-flex items-center font-heading font-medium"
+                  className="group inline-flex items-center font-heading font-medium"
                   href="#"
                 >
-                  <span class="mr-4">Read more</span>
-                  <div class="flex items-center justify-center w-10 h-10 rounded-full bg-green-50 group-hover:bg-green-100">
+                  <span className="mr-4">Read more</span>
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-green-50 group-hover:bg-green-100">
                     <svg
                       width="10"
                       height="8"
@@ -450,53 +478,53 @@ export default function Home() {
                 </a> */}
                             </div>
                         </div>
-                        <div class="w-full lg:w-1/3 px-4 mb-12 lg:mb-0">
-                            <div class="max-w-sm mx-auto">
+                        <div className="w-full lg:w-1/3 px-4 mb-12 lg:mb-0">
+                            <div className="max-w-sm mx-auto">
                                 <img
-                                    class="block w-full h-64 mb-6 object-cover transform hover:scale-110 transition flip-in duration-500"
+                                    className="block w-full h-64 mb-6 object-cover transform hover:scale-110 transition flip-in duration-500"
                                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1q17H2xR5oSo5VBiot_dCC9XOYDqskvdvyr0Rf8VYiTDrZoMcw4XoQVvoX85QEB7RMFs&usqp=CAU"
                                     alt=""
                                 />
-                                <span class="text-sm font-semibold uppercase text-gray-200">
+                                <span className="text-sm font-semibold uppercase text-gray-200">
                                     10 JUN 2022
                                 </span>
 
                                 <a
-                                    class="inline-block hover:text-blue-400 hover:underline"
+                                    className="inline-block hover:text-blue-400 hover:underline"
                                     href="#"
                                 >
-                                    <h3 class="font-heading font-medium text-lg mt-2 mb-4">
+                                    <h3 className="font-heading font-medium text-lg mt-2 mb-4">
                                         There are many variations of passages of Lorem Ipsum
                                         available
                                     </h3>
                                 </a>
-                                <p class="leading-7 mb-4">
+                                <p className="leading-7 mb-4">
                                     There are many variations of passages of Lorem Ipsum
                                     available.
                                 </p>
                             </div>
                         </div>
-                        <div class="w-full lg:w-1/3 px-4">
-                            <div class="max-w-sm mx-auto">
+                        <div className="w-full lg:w-1/3 px-4">
+                            <div className="max-w-sm mx-auto">
                                 <img
-                                    class="block w-full h-64 mb-6 object-cover transform hover:scale-110 transition flip-in duration-500"
+                                    className="block w-full h-64 mb-6 object-cover transform hover:scale-110 transition flip-in duration-500"
                                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1q17H2xR5oSo5VBiot_dCC9XOYDqskvdvyr0Rf8VYiTDrZoMcw4XoQVvoX85QEB7RMFs&usqp=CAU"
                                     alt=""
                                 />
-                                <span class="text-sm font-semibold uppercase text-gray-200">
+                                <span className="text-sm font-semibold uppercase text-gray-200">
                                     10 JUN 2022
                                 </span>
 
                                 <a
-                                    class="inline-block hover:text-blue-400 hover:underline"
+                                    className="inline-block hover:text-blue-400 hover:underline"
                                     href="#"
                                 >
-                                    <h3 class="font-heading font-medium text-lg mt-2 mb-4">
+                                    <h3 className="font-heading font-medium text-lg mt-2 mb-4">
                                         There are many variations of passages of Lorem Ipsum
                                         available
                                     </h3>
                                 </a>
-                                <p class="leading-7 mb-4">
+                                <p className="leading-7 mb-4">
                                     There are many variations of passages of Lorem Ipsum
                                     available.
                                 </p>
@@ -602,16 +630,16 @@ export default function Home() {
                   </div>
                 </div>
               </div> */}
-                            <div class="w-full h-full rounded-4xl overflow-hidden">
+                            <div className="w-full h-full rounded-4xl overflow-hidden">
                                 <iframe
-                                    class="w-full h-full p-5"
+                                    className="w-full h-full p-5"
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6548116104273!2d106.81140987407998!3d-6.308999561739795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69efe3a453ad6d%3A0x1f84ea872ce73988!2sKitabisa%20HQ!5e0!3m2!1sen!2sus!4v1711254162837!5m2!1sen!2sus"
                                     //   width="600"
                                     //   height="450"
                                     style={{ border: 0 }}
                                     //   allowfullscreen="yes"
                                     loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade"
+                                    referrerPolicy="no-referrer-when-downgrade"
                                 ></iframe>
                             </div>
                         </div>
@@ -619,7 +647,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <footer class="w-full h-60 flex flex-row px-16 py-4 bg-slate-200">
+            <footer className="w-full h-60 flex flex-row px-16 py-4 bg-slate-200">
                 <div className="w-1/2 h-full flex flex-row">
                     <div className="w-1/2 h-full flex flex-col">
                         <div className="flex w-full h-1/3">
