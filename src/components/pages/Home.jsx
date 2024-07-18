@@ -12,84 +12,38 @@ import Footer from "../organism/Footer";
 export default function Home() {
     const [topBars, setTopBars] = useState([]);
     const [ourPrograms, setOurPrograms] = useState([]);
+    const [token, setToken] = useState("");
     // const [loading, setLoading] = useState(false);
 
-    const fetchTopBars = async () => {
-        // setLoading(true);
-        console.log('haloaaa');
+    const fetchToken = async () => {
         try {
-            const { data }  = await axios.get(`http://localhost:3000/top-bar`, {
-                // headers: {
-                //     'authorization': `Bearer ` + localStorage.getItem('access_token'),
-                // }
-            });
-            // console.log(data, 'data');
-    
-            // let newTopBars = [...topBars];
-            // data.map(el => {
-            //     // newTopBars.push(el.Club);
-            // })
-            console.log({data});
-
-            setTopBars(data);
+            const response = await axios.post("http://localhost:3000/getToken");
+            console.log("Token:", response.data);
+            return response.data; // Assuming the token is in response.data
         } catch (error) {
-            // Swal.fire({
-            //     title: 'Failed!',
-            //     text: error.response,
-            //     icon: 'error',
-            //     confirmButtonText: 'Ok'
-            // });
-        } finally {
-            // setTimeout(() => {
-            //     setLoading(false);
-            // }, 500);
+            console.error("Error fetching token:", error);
+            return null;
         }
-    }
-
-    const fetchOurPrograms = async () => {
-        // setLoading(true);
-    
-        try {
-            const { data }  = await axios.get(`http://localhost:3000/our-program`, {
-                // headers: {
-                //     'authorization': `Bearer ` + localStorage.getItem('access_token'),
-                // }
-            });
-            console.log(data, 'setOurPrograms');
-    
-            // let newTopBars = [...topBars];
-            // data.map(el => {
-            //     // newTopBars.push(el.Club);
-            // })
-
-            setOurPrograms(data);
-        } catch (error) {
-            // Swal.fire({
-            //     title: 'Failed!',
-            //     text: error.response,
-            //     icon: 'error',
-            //     confirmButtonText: 'Ok'
-            // });
-        } finally {
-            // setTimeout(() => {
-            //     setLoading(false);
-            // }, 500);
-        }
-    }
-
+    };
 
     useEffect(() => {
-        fetchTopBars();
-        fetchOurPrograms();
-
+        const getToken = async () => {
+            const data = await fetchToken();
+            if (data && data.access_token) {
+                setToken(data.access_token);
+            }
+        };
+        getToken();
     }, []);
+
+
     return (
         <>
             {/* //header */}
             <Header topBars={topBars} />
 
             {/* // WelcomingSection */}
-            <WelcomingSection />
+            <WelcomingSection token={token} />
 
             {/* // Visi misi */}
             <Visimisi />
