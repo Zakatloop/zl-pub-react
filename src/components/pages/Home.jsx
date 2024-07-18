@@ -10,102 +10,58 @@ import Kontakkami from "../organism/Kontakkami";
 import Footer from "../organism/Footer";
 
 export default function Home() {
-    const [topBars, setTopBars] = useState([]);
-    const [ourPrograms, setOurPrograms] = useState([]);
-    // const [loading, setLoading] = useState(false);
+  //   const [topBars, setTopBars] = useState([]);
+  const [ourPrograms, setOurPrograms] = useState([]);
+  const [token, setToken] = useState("");
+  // const [loading, setLoading] = useState(false);
 
-    const fetchTopBars = async () => {
-        // setLoading(true);
-        console.log('haloaaa');
-        try {
-            const { data }  = await axios.get(`http://localhost:3000/top-bar`, {
-                // headers: {
-                //     'authorization': `Bearer ` + localStorage.getItem('access_token'),
-                // }
-            });
-            // console.log(data, 'data');
-    
-            // let newTopBars = [...topBars];
-            // data.map(el => {
-            //     // newTopBars.push(el.Club);
-            // })
-            console.log({data});
-
-            setTopBars(data);
-        } catch (error) {
-            // Swal.fire({
-            //     title: 'Failed!',
-            //     text: error.response,
-            //     icon: 'error',
-            //     confirmButtonText: 'Ok'
-            // });
-        } finally {
-            // setTimeout(() => {
-            //     setLoading(false);
-            // }, 500);
-        }
+  const fetchToken = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/getToken");
+      console.log("Token:", response.data);
+      return response.data; // Assuming the token is in response.data
+    } catch (error) {
+      console.error("Error fetching token:", error);
+      return null;
     }
+  };
 
-    const fetchOurPrograms = async () => {
-        // setLoading(true);
-    
-        try {
-            const { data }  = await axios.get(`http://localhost:3000/our-program`, {
-                // headers: {
-                //     'authorization': `Bearer ` + localStorage.getItem('access_token'),
-                // }
-            });
-            console.log(data, 'setOurPrograms');
-    
-            // let newTopBars = [...topBars];
-            // data.map(el => {
-            //     // newTopBars.push(el.Club);
-            // })
+  useEffect(() => {
+    const getToken = async () => {
+      const data = await fetchToken();
+      if (data && data.access_token) {
+        setToken(data.access_token);
+      }
+    };
+    getToken();
+  }, []);
 
-            setOurPrograms(data);
-        } catch (error) {
-            // Swal.fire({
-            //     title: 'Failed!',
-            //     text: error.response,
-            //     icon: 'error',
-            //     confirmButtonText: 'Ok'
-            // });
-        } finally {
-            // setTimeout(() => {
-            //     setLoading(false);
-            // }, 500);
-        }
-    }
+  useEffect(() => {
+    console.log(token);
+  }, [token]);
 
+  return (
+    <>
+      {/* //header */}
+      <Header token={token} />
 
-    useEffect(() => {
-        fetchTopBars();
-        fetchOurPrograms();
+      {/* // WelcomingSection */}
+      <WelcomingSection token={token} />
 
-    }, []);
-    return (
-        <>
-            {/* //header */}
-            <Header topBars={topBars} />
+      {/* // Visi misi */}
+      <Visimisi />
 
-            {/* // WelcomingSection */}
-            <WelcomingSection />
+      {/* // Program */}
+      <Program ourPrograms={ourPrograms} />
 
-            {/* // Visi misi */}
-            <Visimisi />
+      {/* Berita */}
+      <Berita />
 
-            {/* // Program */}
-            <Program ourPrograms={ourPrograms}/>
+      {/* Kontak kami */}
+      <Kontakkami />
 
-            {/* Berita */}
-            <Berita />
-
-            {/* Kontak kami */}
-            <Kontakkami />
-
-            {/* Footer */}
-            <Footer />
-
-        </>
-    );
+      {/* Footer */}
+      <Footer />
+    </>
+  );
 }
