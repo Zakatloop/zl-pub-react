@@ -10,56 +10,57 @@ import Kontakkami from "../organism/Kontakkami";
 import Footer from "../organism/Footer";
 
 export default function Home() {
-    const [topBars, setTopBars] = useState([]);
-    const [ourPrograms, setOurPrograms] = useState([]);
-    const [token, setToken] = useState("");
-    // const [loading, setLoading] = useState(false);
+  //   const [topBars, setTopBars] = useState([]);
+  const [ourPrograms, setOurPrograms] = useState([]);
+  const [token, setToken] = useState("");
+  // const [loading, setLoading] = useState(false);
 
-    const fetchToken = async () => {
-        try {
-            const response = await axios.post("http://localhost:3000/getToken");
-            console.log("Token:", response.data);
-            return response.data; // Assuming the token is in response.data
-        } catch (error) {
-            console.error("Error fetching token:", error);
-            return null;
-        }
+  const fetchToken = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/getToken");
+      console.log("Token:", response.data);
+      return response.data; // Assuming the token is in response.data
+    } catch (error) {
+      console.error("Error fetching token:", error);
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    const getToken = async () => {
+      const data = await fetchToken();
+      if (data && data.access_token) {
+        setToken(data.access_token);
+      }
     };
+    getToken();
+  }, []);
 
-    useEffect(() => {
-        const getToken = async () => {
-            const data = await fetchToken();
-            if (data && data.access_token) {
-                setToken(data.access_token);
-            }
-        };
-        getToken();
-    }, []);
+  useEffect(() => {
+    console.log(token);
+  }, [token]);
 
+  return (
+    <>
+      {/* //header */}
+      <Header topBars={topBars} />
 
-    return (
-        <>
-            {/* //header */}
-            <Header topBars={topBars} />
+      {/* // WelcomingSection */}
+      <WelcomingSection token={token} />
 
-            {/* // WelcomingSection */}
-            <WelcomingSection token={token} />
+      {/* // Visi misi */}
+      <Visimisi />
 
-            {/* // Visi misi */}
-            <Visimisi />
+      {/* // Program */}
+      <Program ourPrograms={ourPrograms} />
 
-            {/* // Program */}
-            <Program ourPrograms={ourPrograms}/>
+      {/* Berita */}
+      <Berita />
 
-            {/* Berita */}
-            <Berita />
+      {/* Kontak kami */}
+      <Kontakkami />
 
-            {/* Kontak kami */}
-            <Kontakkami />
-
-            {/* Footer */}
-            <Footer />
-
-        </>
-    );
-}
+      {/* Footer */}
+      <Footer />
+    </>
+  );
