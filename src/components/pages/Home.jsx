@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <>
       {/* //header */}
-      <Header token={token} />
+      <Header topBars={topBars} />
 
       {/* // WelcomingSection */}
       <WelcomingSection token={token} />
@@ -64,4 +64,3 @@ export default function Home() {
       <Footer />
     </>
   );
-}
