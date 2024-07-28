@@ -1,6 +1,7 @@
 // import axios from "axios";
-
+import { Link } from "react-router-dom";
 import { useState } from "react";
+import Program from "./Program";
 
 export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -52,16 +53,16 @@ export default function Header() {
             </div>
             <ul className="flex flex-col items-center justify-between min-h-[250px]">
               <li className="border-b border-green-700 my-8 text-green-700 font-semibold">
-                <a href="/about">Tentang Kami</a>
+                <a href="#tentang-kami">Tentang Kami</a>
               </li>
               <li className="border-b border-green-700 my-8 text-green-700 font-semibold">
-                <a href="/portfolio">Nilai Kami</a>
+                <a href="#nilai-kami">Nilai Kami</a>
               </li>
               <li className="border-b border-green-700 my-8 text-green-700 font-semibold">
-                <a href="/contact">Program Kami</a>
+                <a href="#program-kami">Program Kami</a>
               </li>
               <li className="border-b border-green-700 my-8 text-green-700 font-semibold">
-                <a href="/contact">Kontak Kami</a>
+                <a href="#kontak-kami">Kontak Kami</a>
               </li>
             </ul>
           </div>
@@ -70,22 +71,22 @@ export default function Header() {
         {/* NORMAL VIEW */}
         <ul className="DESKTOP-MENU hidden space-x-8 lg:flex flex-row justify-end items-end gap-2 px-10 mr-10">
           <li className="flex flex-row px-4 py-2 cursor-pointer hover:text-green-700 text-green-600 rounded-full justify-center items-center transition duration-700 font-semibold hover:font-bold">
-            <a className="text-2xl" href="/about">
-              About
+            <a href="#tentang-kami" className="text-2xl">
+              Tentang Kami
             </a>
           </li>
           <li className="flex flex-row px-4 py-2 cursor-pointer hover:text-green-700 text-green-600 rounded-full justify-center items-center transition duration-700 font-semibold hover:font-bold">
-            <a className="text-2xl" href="/portfolio">
+            <a href="#nilai-kami" className="text-2xl">
               Nilai Kami
             </a>
           </li>
           <li className="flex flex-row px-4 py-2 cursor-pointer hover:text-green-700 text-green-600 rounded-full justify-center items-center transition duration-700 font-semibold hover:font-bold">
-            <a className="text-2xl" href="/contact">
+            <a href="#program-kami" className="text-2xl">
               Program Kami
             </a>
           </li>
           <li className="flex flex-row px-4 py-2 cursor-pointer hover:text-green-700 text-green-600 rounded-full justify-center items-center transition duration-700 font-semibold hover:font-bold">
-            <a className="text-2xl" href="/contact">
+            <a href="#kontak-kami" className="text-2xl">
               Kontak Kami
             </a>
           </li>
