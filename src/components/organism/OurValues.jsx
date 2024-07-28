@@ -21,10 +21,10 @@ const OurValues = () => {
   ];
 
   return (
-    <div className="w-full flex justify-center items-center bg-teal-500/0 px-6 md:px-20 py-10">
+    <div className="w-full flex justify-center items-center px-6 md:px-20 py-10">
       <div className="w-full flex flex-col gap-8 justify-center items-center h-3/4">
         <h1 className="text-5xl font-bold text-center text-green-900">
-          Our Values
+          Nilai Kami
         </h1>
 
         <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-8">

@@ -2,21 +2,19 @@ export default function Footer() {
   return (
     <footer className="w-full grid grid-cols-12 gap-2 justify-center items-start py-2 bg-teal-950 text-slate-50">
       {/* logo */}
-      <div className="col-span-12 lg:col-span-4 order-3 lg:order-1 flex flex-col gap-4 justify-center items-center p-8 bg-teal-500/0">
-        <div className="bg-red-500/0">
-          <img
-            src="/images/zl_logo3.png"
-            alt="ZakatLoop Logo"
-            className="w-44 h-44"
-          />
-        </div>
-        <p className="text-base font-thin bg-sky-500/0">
+      <div className="col-span-12 lg:col-span-4 order-3 lg:order-1 flex flex-col gap-4 justify-center items-center p-8">
+        <img
+          src="/images/zl_logo3.png"
+          alt="ZakatLoop Logo"
+          className="w-44 h-44"
+        />
+        <p className="text-base font-thin">
           © 2024 — Yayasan Zakat Loop Indonesia
         </p>
       </div>
 
       {/* address */}
-      <div className="col-span-12 lg:col-span-4 order-1 lg:order-2 flex flex-col justify-start p-8 bg-sky-500/0 h-full">
+      <div className="col-span-12 lg:col-span-4 order-1 lg:order-2 flex flex-col justify-start p-8 h-full">
         <p className="font-bold text-xl mb-4">Alamat</p>
         <div className="w-8/12 flex flex-col tracking-wide font-thin">
           <p className="font-medium mb-1">ZakatLoop (KitaBisa HQ)</p>
@@ -28,7 +26,7 @@ export default function Footer() {
       </div>
 
       {/* social media */}
-      <div className="col-span-12 lg:col-span-4 order-2 lg:order-3 flex flex-col gap-2 justify-start p-8 bg-sky-500/0 font-thin">
+      <div className="col-span-12 lg:col-span-4 order-2 lg:order-3 flex flex-col gap-2 justify-start p-8 font-thin">
         <p className="font-bold text-xl mb-2">Media Sosial</p>
 
         <a
