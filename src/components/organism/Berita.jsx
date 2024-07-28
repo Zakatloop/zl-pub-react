@@ -1,131 +1,154 @@
+import { useState } from "react";
+
 export default function Berita() {
-    return (
-            <section className="pt-24 pb-36 bg-white overflow-hidden">
-                <div className="container p-5 mx-auto">
-                    <h2 className="mb-4 text-5xl md:text-6xl text-center font-bold font-heading tracking-px-n leading-tight font-serif italic">
-                        Laporan
-                    </h2>
-                    <p className="mb-24 font-medium text-gray-600 text-center leading-relaxed md:max-w-lg mx-auto">
-                        Lorem ipsum dolor sit amet, to the consectr adipiscing elit.
-                        Volutpat tempor to the condimentum vitae vel purus.
-                    </p>
-                    {/* <a
-                          className="inline-block hover:text-blue-400 hover:underline"
-                          href="#"
-                        >
-                          <h3 className="text-xl font-semibold leading-normal">
-                            How life insurance helps you during financial
-                            insolvency
-                          </h3>
-                        </a> */}
-                </div>
+  const [isClicked, setIsClicked] = useState(false);
 
-                <div className="container px-4 mx-auto">
-                    <div className="flex flex-wrap -mx-4">
-                        <div className="w-full lg:w-1/3 px-4 mb-12 lg:mb-0">
-                            <div className="max-w-sm mx-auto">
-                                <img
-                                    className="block w-full h-64 mb-6 object-cover  transform hover:scale-110 transition flip-in duration-500"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1q17H2xR5oSo5VBiot_dCC9XOYDqskvdvyr0Rf8VYiTDrZoMcw4XoQVvoX85QEB7RMFs&usqp=CAU"
-                                    alt=""
-                                />
-                                <span className="text-sm font-semibold uppercase text-gray-200">
-                                    10 JUN 2022
-                                </span>
+  const handleDownloadClick = (e) => {
+    // Prevent default link behavior
+    e.preventDefault();
+    // Trigger animation
+    setIsClicked(true);
+    const button = e.currentTarget.querySelector("a");
+    console.log(button.href, "<<<<<", button.download);
+    // Remove animation after it ends
+    setIsClicked(button.href);
+    button.classList.add("transform", "scale-110");
+    setTimeout(() => {
+      setIsClicked(null);
+      button.classList.remove("transform", "scale-110");
+    }, 300); // Animation duration in ms
 
-                                <a
-                                    className="inline-block hover:text-blue-400 hover:underline"
-                                    href="#"
-                                >
-                                    <h3 className="font-heading font-medium text-lg mt-2 mb-4">
-                                        There are many variations of passages of Lorem Ipsum
-                                        available
-                                    </h3>
-                                </a>
+    downloadFile(button.href, button.download);
+  };
 
-                                <p className="leading-7 mb-4">
-                                    There are many variations of passages of Lorem Ipsum
-                                    available.
-                                </p>
-                                {/* <a
-                  className="group inline-flex items-center font-heading font-medium"
-                  href="#"
+  const downloadFile = (url, filename) => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <section className="pt-24 pb-36 bg-white overflow-hidden">
+      <div className="container p-5 mx-auto ">
+        <h2 className="mb-4 text-5xl md:text-6xl text-center font-bold font-heading tracking-px-n leading-tight font-serif italic">
+          Laporan
+        </h2>
+        <p className="mb-24 font-medium text-gray-600 text-center leading-relaxed md:max-w-lg mx-auto">
+          Sebagai organisasi yang menjujung transparansi dan akuntabilitas,
+          ZakatLoop melaporkan kegiatan-kegiatan yang dilakukan beserta
+          penggunaan dananya melalui laporan tahunan yang rutin diterbitkan.
+        </p>
+      </div>
+
+      <div className="container px-4 mx-auto">
+        <div className="flex flex-wrap lg:flex-nowrap -mx-4 gap-2 justify-center items-center">
+          <div className="w-2/3 lg:w-1/3 mb-12 lg:mb-0 bg-gray-200 shadow-xl rounded-xl">
+            <img
+              className="block w-full h-64 mb-6 object-cover rounded-t-xl"
+              src="/images/Laporan_Periode_1.png"
+              alt=""
+            />
+            <div className="max-w-sm mx-auto">
+              <span className="text-xs md:text-sm text-white font-semibold bg-green-500 py-1 px-3 rounded-full inline">
+                2021 - 2022<br></br>
+              </span>
+
+              <h3 className="font-heading font-medium text-lg mt-2 mb-4">
+                Laporan Kegiatan Periode 1 (Sep 2021 - Juni 2022)
+              </h3>
+              <p className="leading-7 mb-4">
+                Program:<br></br>- Entrepreneur in Residence<br></br>- Student
+                Fellowship - Batch 1<br></br>
+              </p>
+              <div onClick={handleDownloadClick}>
+                <a
+                  href="/documents/Laporan_Periode_1.pdf"
+                  download="Laporan Kegiatan Zakatloop 2021.pdf"
+                  target="_blank"
+                  className={`w-full mb-8 block bg-green-700 text-center cursor-pointer px-3 py-1 rounded-lg text-white transition-transform duration-300 ${
+                    isClicked === "/documents/Laporan_Periode_1.pdf"
+                      ? "transform scale-110"
+                      : ""
+                  }`}
                 >
-                  <span className="mr-4">Read more</span>
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-green-50 group-hover:bg-green-100">
-                    <svg
-                      width="10"
-                      height="8"
-                      viewbox="0 0 10 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1.49992 4H8.49992M8.49992 4L5.49992 1M8.49992 4L5.49992 7"
-                        stroke="#00CBA6"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>
-                    </svg>
-                  </div>
-                </a> */}
-                            </div>
-                        </div>
-                        <div className="w-full lg:w-1/3 px-4 mb-12 lg:mb-0">
-                            <div className="max-w-sm mx-auto">
-                                <img
-                                    className="block w-full h-64 mb-6 object-cover transform hover:scale-110 transition flip-in duration-500"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1q17H2xR5oSo5VBiot_dCC9XOYDqskvdvyr0Rf8VYiTDrZoMcw4XoQVvoX85QEB7RMFs&usqp=CAU"
-                                    alt=""
-                                />
-                                <span className="text-sm font-semibold uppercase text-gray-200">
-                                    10 JUN 2022
-                                </span>
+                  Download
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="w-2/3 lg:w-1/3 mb-12 lg:mb-0 bg-gray-200 shadow-xl rounded-xl">
+            <img
+              className="block w-full h-64 mb-6 object-cover rounded-t-xl"
+              src="/images/Laporan_Tahunan_2022.png"
+              alt=""
+            />
+            <div className="max-w-sm mx-auto">
+              <span className="text-xs md:text-sm text-white font-semibold bg-green-500 py-1 px-3 rounded-full inline">
+                2022<br></br>
+              </span>
 
-                                <a
-                                    className="inline-block hover:text-blue-400 hover:underline"
-                                    href="#"
-                                >
-                                    <h3 className="font-heading font-medium text-lg mt-2 mb-4">
-                                        There are many variations of passages of Lorem Ipsum
-                                        available
-                                    </h3>
-                                </a>
-                                <p className="leading-7 mb-4">
-                                    There are many variations of passages of Lorem Ipsum
-                                    available.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="w-full lg:w-1/3 px-4">
-                            <div className="max-w-sm mx-auto">
-                                <img
-                                    className="block w-full h-64 mb-6 object-cover transform hover:scale-110 transition flip-in duration-500"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1q17H2xR5oSo5VBiot_dCC9XOYDqskvdvyr0Rf8VYiTDrZoMcw4XoQVvoX85QEB7RMFs&usqp=CAU"
-                                    alt=""
-                                />
-                                <span className="text-sm font-semibold uppercase text-gray-200">
-                                    10 JUN 2022
-                                </span>
+              <h3 className="font-heading font-medium text-lg mt-2 mb-4">
+                Laporan Tahunan (2022)
+              </h3>
+              <p className="leading-7 mb-4">
+                Program:<br></br>- Student Fellowship - Batch 1 <br></br>-
+                Student Fellowship - Batch 2 <br></br>
+              </p>
+              <div onClick={handleDownloadClick}>
+                <a
+                  href="/documents/Laporan_Tahunan_2022.pdf"
+                  download="Laporan Kegiatan Zakatloop 2022.pdf"
+                  target="_blank"
+                  className={`w-full mb-8 block bg-green-700 text-center cursor-pointer px-3 py-1 rounded-lg text-white transition-transform duration-300 ${
+                    isClicked === "/documents/Laporan_Tahunan_2022.pdf"
+                      ? "transform scale-110"
+                      : ""
+                  }`}
+                >
+                  Download
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="w-2/3 lg:w-1/3 mb-12 lg:mb-0 bg-gray-200 shadow-xl rounded-xl">
+            <img
+              className="block w-full h-64 mb-6 object-cover rounded-t-xl"
+              src="/images/Laporan_Tahunan_2023.png"
+              alt="Laporan Tahun 2023 Image"
+            />
+            <div className="max-w-sm mx-auto">
+              <span className="text-xs md:text-sm text-white font-semibold bg-green-500 py-1 px-3 rounded-full inline">
+                2023<br></br>
+              </span>
 
-                                <a
-                                    className="inline-block hover:text-blue-400 hover:underline"
-                                    href="#"
-                                >
-                                    <h3 className="font-heading font-medium text-lg mt-2 mb-4">
-                                        There are many variations of passages of Lorem Ipsum
-                                        available
-                                    </h3>
-                                </a>
-                                <p className="leading-7 mb-4">
-                                    There are many variations of passages of Lorem Ipsum
-                                    available.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    )
+              <h3 className="font-heading font-medium text-lg mt-2 mb-4">
+                Laporan Tahunan (2023)
+              </h3>
+              <p className="leading-7 mb-4">
+                Program:<br></br> - Student Fellowship - Batch 2 <br></br> -
+                Accelerate Tech Fellowship
+              </p>
+              <div onClick={handleDownloadClick}>
+                <a
+                  href="/documents/Laporan_Tahunan_2023.pdf"
+                  download="Laporan Kegiatan Zakatloop 2023.pdf"
+                  target="_blank"
+                  className={`w-full mb-8 block bg-green-700 text-center cursor-pointer px-3 py-1 rounded-lg text-white transition-transform duration-300 ${
+                    isClicked === "/documents/Laporan_Tahunan_2023.pdf"
+                      ? "transform scale-110"
+                      : ""
+                  }`}
+                >
+                  Download
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
