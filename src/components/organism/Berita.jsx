@@ -56,7 +56,7 @@ export default function Berita() {
                 2023<br></br>
               </span>
 
-              <h3 className="font-heading font-medium text-lg mt-2 mb-4">
+              <h3 className="font-heading font-medium text-lg mt-2 mb-4 hover:text-blue-600 hover:cursor-pointer">
                 Laporan Tahunan (2023)
               </h3>
               <p className="leading-7 mb-4">
@@ -90,7 +90,7 @@ export default function Berita() {
                 2022<br></br>
               </span>
 
-              <h3 className="font-heading font-medium text-lg mt-2 mb-4">
+              <h3 className="font-heading font-medium text-lg mt-2 mb-4 hover:text-blue-600 hover:cursor-pointer">
                 Laporan Tahunan (2022)
               </h3>
               <p className="leading-7 mb-4">
@@ -125,7 +125,7 @@ export default function Berita() {
                 2021 - 2022<br></br>
               </span>
 
-              <h3 className="font-heading font-medium text-lg mt-2 mb-4">
+              <h3 className="font-heading font-medium text-lg mt-2 mb-4 hover:text-blue-600 hover:cursor-pointer">
                 Laporan Kegiatan Periode 1 (Sep 2021 - Juni 2022)
               </h3>
               <p className="leading-7 mb-4">
