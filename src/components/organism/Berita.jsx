@@ -48,28 +48,28 @@ export default function Berita() {
           <div className="w-2/3 lg:w-1/3 mb-12 lg:mb-0 bg-gray-200 shadow-xl rounded-xl">
             <img
               className="block w-full h-64 mb-6 object-cover rounded-t-xl"
-              src="/images/Laporan_Periode_1.png"
-              alt=""
+              src="/images/Laporan_Tahunan_2023.png"
+              alt="Laporan Tahun 2023 Image"
             />
             <div className="max-w-sm mx-auto">
               <span className="text-xs md:text-sm text-white font-semibold bg-green-500 py-1 px-3 rounded-full inline">
-                2021 - 2022<br></br>
+                2023<br></br>
               </span>
 
               <h3 className="font-heading font-medium text-lg mt-2 mb-4">
-                Laporan Kegiatan Periode 1 (Sep 2021 - Juni 2022)
+                Laporan Tahunan (2023)
               </h3>
               <p className="leading-7 mb-4">
-                Program:<br></br>- Entrepreneur in Residence<br></br>- Student
-                Fellowship - Batch 1<br></br>
+                Program:<br></br> - Student Fellowship - Batch 2 <br></br> -
+                Accelerate Tech Fellowship
               </p>
               <div onClick={handleDownloadClick}>
                 <a
-                  href="/documents/Laporan_Periode_1.pdf"
-                  download="Laporan Kegiatan Zakatloop 2021.pdf"
+                  href="/documents/Laporan_Tahunan_2023.pdf"
+                  download="Laporan Kegiatan Zakatloop 2023.pdf"
                   target="_blank"
                   className={`w-full mb-8 block bg-green-700 text-center cursor-pointer px-3 py-1 rounded-lg text-white transition-transform duration-300 ${
-                    isClicked === "/documents/Laporan_Periode_1.pdf"
+                    isClicked === "/documents/Laporan_Tahunan_2023.pdf"
                       ? "transform scale-110"
                       : ""
                   }`}
@@ -113,31 +113,32 @@ export default function Berita() {
               </div>
             </div>
           </div>
+
           <div className="w-2/3 lg:w-1/3 mb-12 lg:mb-0 bg-gray-200 shadow-xl rounded-xl">
             <img
               className="block w-full h-64 mb-6 object-cover rounded-t-xl"
-              src="/images/Laporan_Tahunan_2023.png"
-              alt="Laporan Tahun 2023 Image"
+              src="/images/Laporan_Periode_1.png"
+              alt=""
             />
             <div className="max-w-sm mx-auto">
               <span className="text-xs md:text-sm text-white font-semibold bg-green-500 py-1 px-3 rounded-full inline">
-                2023<br></br>
+                2021 - 2022<br></br>
               </span>
 
               <h3 className="font-heading font-medium text-lg mt-2 mb-4">
-                Laporan Tahunan (2023)
+                Laporan Kegiatan Periode 1 (Sep 2021 - Juni 2022)
               </h3>
               <p className="leading-7 mb-4">
-                Program:<br></br> - Student Fellowship - Batch 2 <br></br> -
-                Accelerate Tech Fellowship
+                Program:<br></br>- Entrepreneur in Residence<br></br>- Student
+                Fellowship - Batch 1<br></br>
               </p>
               <div onClick={handleDownloadClick}>
                 <a
-                  href="/documents/Laporan_Tahunan_2023.pdf"
-                  download="Laporan Kegiatan Zakatloop 2023.pdf"
+                  href="/documents/Laporan_Periode_1.pdf"
+                  download="Laporan Kegiatan Zakatloop 2021.pdf"
                   target="_blank"
                   className={`w-full mb-8 block bg-green-700 text-center cursor-pointer px-3 py-1 rounded-lg text-white transition-transform duration-300 ${
-                    isClicked === "/documents/Laporan_Tahunan_2023.pdf"
+                    isClicked === "/documents/Laporan_Periode_1.pdf"
                       ? "transform scale-110"
                       : ""
                   }`}
