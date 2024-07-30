@@ -6,7 +6,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="w-full flex justify-center items-center px-6 lg:px-20 py-10">
+    <div className="w-full flex justify-center items-center px-6 lg:px-20 py-10 md:mt-48 2xl:mt-0">
       <div className="w-full">
         <h1 className="text-4xl font-bold text-left mb-10">Tentang Kami</h1>
 

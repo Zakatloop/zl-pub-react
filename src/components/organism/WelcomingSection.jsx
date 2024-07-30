@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
-export default function WelcomingSection({token}) {
+export default function WelcomingSection() {
     // const [welcomingSectionData, setWelcomingSectionData] = useState(null);
 
     // const fetchSectionContent = async (token) => {
@@ -35,7 +35,7 @@ export default function WelcomingSection({token}) {
 
 
     return (
-        <div className="flex flex-row w-full h-screen pb-48">
+        <div className="flex flex-row w-full h-screen 2xl:pb-36 md:pt-10 2xl:pt-0">
             {/* Web view */}
             <div className="hidden 2xl:flex items-center justify-center w-1/2 mb-20 2xl:pl-0 sm:pl-16">
             {/* {welcomingSectionData && (
@@ -99,13 +99,13 @@ export default function WelcomingSection({token}) {
                     </div>
                     <div className="absolute h-32 w-32 right-36 -bottom-8 bg-pink-400 shadow-xl rounded-md">
                         <img
-                            src="/images/awardees/.png"
+                            src="/images/awardees/8.png"
                             className="w-full h-full shadow-xl rounded-md"
                         />
                     </div>
                     <div className="absolute h-32 w-32 -left-40 -bottom-24 bg-pink-400 shadow-xl rounded-md">
                         <img
-                            src="/images/awardees/.png"
+                            src="/images/awardees/9.png"
                             className="w-full h-full shadow-xl rounded-md"
                         />
                     </div>
@@ -303,19 +303,19 @@ export default function WelcomingSection({token}) {
                         </div>
                         <div className="h-16 w-16 md:h-28 md:w-28 bg-purple-400 shadow-xl rounded-full animate-fade-down animate-duration-1000 animate-delay-[4000ms]">
                             <img
-                                src="/images/awardees/1.png"
+                                src="/images/awardees/3.png"
                                 className="w-full h-full shadow-xl rounded-full"
                             />
                         </div>
                         <div className="flex mb-16 h-16 w-16 md:h-28 md:w-28 bg-purple-400 shadow-xl rounded-full animate-fade-up animate-duration-1000 animate-delay-[4000ms]">
                             <img
-                                src="/images/awardees/3.png"
+                                src="/images/awardees/4.png"
                                 className="w-full h-full shadow-xl rounded-full"
                             />
                         </div>
                         <div className="h-16 w-16 md:h-28 md:w-28 bg-purple-400 shadow-xl rounded-full animate-fade-down animate-duration-1000 animate-delay-[4000ms]">
                             <img
-                                src="/images/awardees/4.png"
+                                src="/images/awardees/8.png"
                                 className="w-full h-full shadow-xl rounded-full"
                             />
                         </div>
