@@ -10,7 +10,7 @@ import Kontakkami from "../organism/Kontakkami";
 import Footer from "../organism/Footer";
 
 export default function Home() {
-  //   const [topBars, setTopBars] = useState([]);
+  const [topBars, setTopBars] = useState([]);
   const [ourPrograms, setOurPrograms] = useState([]);
   const [token, setToken] = useState("");
   // const [loading, setLoading] = useState(false);
@@ -43,22 +43,30 @@ export default function Home() {
   return (
     <>
       {/* //header */}
-      {/* <Header topBars={topBars} /> */}
+      <Header />
 
       {/* // WelcomingSection */}
-      {/* <WelcomingSection token={token} /> */}
+      <div id="tentang-kami">
+        <WelcomingSection token={token} />
+      </div>
 
       {/* // Visi misi */}
-      <Visimisi />
+      <div id="nilai-kami">
+        <Visimisi />
+      </div>
 
       {/* // Program */}
-      <Program ourPrograms={ourPrograms} />
+      <div id="program-kami">
+        <Program ourPrograms={ourPrograms} />
+      </div>
 
       {/* Berita */}
       <Berita />
 
       {/* Kontak kami */}
-      <Kontakkami />
+      <div id="kontak-kami">
+        <Kontakkami />
+      </div>
 
       {/* Footer */}
       <Footer />

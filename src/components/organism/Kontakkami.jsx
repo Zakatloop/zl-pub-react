@@ -2,6 +2,7 @@ export default function Kontakkami() {
   return (
     <div className="relative">
       {/* <img
+
                   src="https://cdn.tuk.dev/assets/templates/radian/Back_Image.png"
                   className="h-2/5 lg:h-full w-full lg:w-1/2 absolute inset-0 object-cover object-center xl:block hidden"
                   alt="map"
@@ -14,6 +15,7 @@ export default function Kontakkami() {
                       className="h-full w-full xl:w-1/2 absolute inset-0 bg-cover bg-center xl:hidden"
                       alt="map"
                   /> */}
+
             <div className="w-full flex flex-col items-start  xl:justify-start  relative z-20 xl:px-0 px-4 xl:py-0 py-4">
               <div className="w-full 2xl:pl-20 xl:pt-1">
                 <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold tracking-wider text-gray-800">
@@ -28,6 +30,7 @@ export default function Kontakkami() {
                   </h2>
                   <div className="mt-4 md:mt-8">
                     <h2 className="text-md md:text-base text-white font-semibold bg-green-500 py-1 px-3 rounded-full inline">
+
                       Alamat
                     </h2>
                     <h2 className="text-gray-800 text-base md:text-lg leading-8 tracking-wider mt-2">
@@ -96,6 +99,7 @@ export default function Kontakkami() {
               </div>
               </div>
           </div> */}
+
             <div className="w-full h-full rounded-4xl overflow-hidden">
               <iframe
                 className="w-full h-full p-5"
