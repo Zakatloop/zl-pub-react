@@ -21,7 +21,7 @@ export default function Kontakkami() {
                 <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold tracking-wider text-gray-800">
                   Hubungi Kami
                 </h1>
-                <div className="w-full md:w-10/12 mt-3">
+                <div className="w-full md:w-10/12 mt-6">
                   <h2 className="text-gray-800 text-base md:text-lg leading-8 tracking-wider">
                     Apabila Anda memiliki pertanyaan atau masukan terkait
                     ZakatLoop, silakan hubungi kami melalui informasi kontak di

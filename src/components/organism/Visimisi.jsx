@@ -34,7 +34,7 @@ export default function Visimisi() {
                             penyaluran Zakat produktif yang dapat memberikan dampak
                             berkelanjutan.
                         </p>
-                        <div className="flex flex-row w-full h-full justify-center items-center">
+                        <div className="flex flex-row w-full h-full justify-center items-center sm:mt-4">
                             <div className="px-6 py-2 flex justify-center items-center rounded-full bg-orange-500 cursor-pointer transition-all duration-700 shadow-xl italic hover:bg-white hover:border-4 hover:border-orange-500 hover:text-orange-500 text-white font-semibold text-xl hover:font-bold"><a href="https://kitabisa.com/campaign/ZakatLoop" target="_blank">Donate Now !</a></div>
                         </div>
                     </div>

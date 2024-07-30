@@ -44,7 +44,7 @@ export default function Berita() {
       </div>
 
       <div className="container px-4 mx-auto">
-        <div className="flex flex-wrap lg:flex-nowrap -mx-4 gap-2 justify-center items-center">
+        <div className="flex flex-wrap lg:flex-nowrap mx-4 gap-4 justify-center items-center ">
           <div className="w-2/3 lg:w-1/3 mb-12 lg:mb-0 bg-gray-200 shadow-xl rounded-xl">
             <img
               className="block w-full h-64 mb-6 object-cover rounded-t-xl"
@@ -126,7 +126,7 @@ export default function Berita() {
               </span>
 
               <h3 className="font-heading font-medium text-lg mt-2 mb-4 hover:text-blue-600 hover:cursor-pointer">
-                Laporan Kegiatan Periode 1 (Sep 2021 - Juni 2022)
+                Laporan Kegiatan Periode 1 (Sep '21 - Juni '22)
               </h3>
               <p className="leading-7 mb-4">
                 Program:<br></br>- Entrepreneur in Residence<br></br>- Student

@@ -8,37 +8,39 @@ import Program from "../organism/Program";
 import Berita from "../organism/Berita";
 import Kontakkami from "../organism/Kontakkami";
 import Footer from "../organism/Footer";
+import OurValues from "../organism/OurValues";
+import AboutUs from "../organism/AboutUs";
 
 export default function Home() {
-  const [topBars, setTopBars] = useState([]);
-  const [ourPrograms, setOurPrograms] = useState([]);
-  const [token, setToken] = useState("");
+  // const [topBars, setTopBars] = useState([]);
+  // const [ourPrograms, setOurPrograms] = useState([]);
+  // const [token, setToken] = useState("");
   // const [loading, setLoading] = useState(false);
 
-  const fetchToken = async () => {
-    try {
-      const response = await axios.post("http://localhost:3000/getToken");
-      console.log("Token:", response.data);
-      return response.data; // Assuming the token is in response.data
-    } catch (error) {
-      console.error("Error fetching token:", error);
-      return null;
-    }
-  };
+  // const fetchToken = async () => {
+  //   try {
+  //     const response = await axios.post("http://localhost:3000/getToken");
+  //     console.log("Token:", response.data);
+  //     return response.data; // Assuming the token is in response.data
+  //   } catch (error) {
+  //     console.error("Error fetching token:", error);
+  //     return null;
+  //   }
+  // };
 
-  useEffect(() => {
-    const getToken = async () => {
-      const data = await fetchToken();
-      if (data && data.access_token) {
-        setToken(data.access_token);
-      }
-    };
-    getToken();
-  }, []);
+  // useEffect(() => {
+  //   const getToken = async () => {
+  //     const data = await fetchToken();
+  //     if (data && data.access_token) {
+  //       setToken(data.access_token);
+  //     }
+  //   };
+  //   getToken();
+  // }, []);
 
-  useEffect(() => {
-    console.log(token);
-  }, [token]);
+  // useEffect(() => {
+  //   console.log(token);
+  // }, [token]);
 
   return (
     <>
@@ -46,18 +48,23 @@ export default function Home() {
       <Header />
 
       {/* // WelcomingSection */}
-      <div id="tentang-kami">
-        <WelcomingSection token={token} />
-      </div>
+      {/* <div > */}
+        <WelcomingSection />
+      {/* </div> */}
+
 
       {/* // Visi misi */}
-      <div id="nilai-kami">
-        <Visimisi />
+      <div id="tentang-kami">
+        <AboutUs />
       </div>
 
+      <div id="nilai-kami">
+        <OurValues />
+      </div>
+      
       {/* // Program */}
       <div id="program-kami">
-        <Program ourPrograms={ourPrograms} />
+        <Program/>
       </div>
 
       {/* Berita */}

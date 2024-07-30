@@ -8,10 +8,10 @@ export default function Program(ourPrograms) {
           alt=""
         />
         <div className="relative z-10 container px-4 mx-auto">
-          <p className="mb-5 text-3xl md:text-6xl xl:text-8xl text-center font-bold font-heading tracking-px-n leading-none animate-bounce">
+          <p className="mb-5 text-3xl md:text-6xl xl:text-8xl text-center font-bold font-heading tracking-px-n leading-none animate-bounce text-white">
             Program Kami
           </p>
-          <p className="mb-20 text-lg text-gray-600 text-center font-medium leading-normal md:max-w-lg mx-auto">
+          <p className="mb-20 text-lg text-gray-600 text-center font-medium leading-normal md:max-w-lg mx-auto text-white">
             Selama 2021 - 2024, ZakatLoop telah menjalankan 3 program utama.
             Sasaran penerima manfaat dari program-program kami yaitu anak muda
             (18 - 25 tahun) dari golongan penerima zakat (asnaf zakat).
