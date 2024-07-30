@@ -43,22 +43,30 @@ export default function Home() {
   return (
     <>
       {/* //header */}
-      <Header topBars={topBars} />
+      <Header />
 
       {/* // WelcomingSection */}
-      <WelcomingSection token={token} />
+      <div id="tentang-kami">
+        <WelcomingSection token={token} />
+      </div>
 
       {/* // Visi misi */}
-      <Visimisi />
+      <div id="nilai-kami">
+        <Visimisi />
+      </div>
 
       {/* // Program */}
-      <Program ourPrograms={ourPrograms} />
+      <div id="program-kami">
+        <Program ourPrograms={ourPrograms} />
+      </div>
 
       {/* Berita */}
       <Berita />
 
       {/* Kontak kami */}
-      <Kontakkami />
+      <div id="kontak-kami">
+        <Kontakkami />
+      </div>
 
       {/* Footer */}
       <Footer />
