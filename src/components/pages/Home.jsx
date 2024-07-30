@@ -10,7 +10,7 @@ import Kontakkami from "../organism/Kontakkami";
 import Footer from "../organism/Footer";
 
 export default function Home() {
-  //   const [topBars, setTopBars] = useState([]);
+  const [topBars, setTopBars] = useState([]);
   const [ourPrograms, setOurPrograms] = useState([]);
   const [token, setToken] = useState("");
   // const [loading, setLoading] = useState(false);
@@ -64,3 +64,4 @@ export default function Home() {
       <Footer />
     </>
   );
+}
