@@ -1,0 +1,109 @@
+{
+    "posts": [
+        { "id": "1", "title": "a title", "views": 100 },
+        { "id": "2", "title": "another title", "views": 200 }
+    ],
+    "comments": [
+        { "id": "1", "text": "a comment about post 1", "postId": "1" },
+        { "id": "2", "text": "another comment about post 1", "postId": "1" }
+    ],
+    "profile": {
+        "name": "typicode"
+    },
+    "top-bar": [
+        {
+            "id": "1",
+            "section": "top-bar",
+            "key": "top-bar-logo",
+            "content": "Logo Zakatloop",
+            "documents": [
+                {
+                    "id": "1",
+                    "name": "zakatloopLogo.png",
+                    "dir": "https://img.freepik.com/free-vector/gradient-rounded-abstract-business-logotype_23-2148199344.jpg?w=740&t=st=1717218361~exp=1717218961~hmac=357fe542e6749fd8fd41b83d7788fffb172388ae91079653f81af2e58dd131a3",
+                    "type": "png",
+                    "contentId": "1"
+                } 
+            ]
+        },
+        {
+            "id": "2",
+            "section": "top-bar",
+            "key": "top-bar-menu-1",
+            "content": "menu 1",
+            "documents": []
+        },
+        {
+            "id": "3",
+            "section": "top-bar",
+            "key": "top-bar-menu-2",
+            "content": "menu 2",
+            "documents": []
+        },
+        {
+            "id": "4",
+            "section": "top-bar",
+            "key": "top-bar-menu-3",
+            "content": "menu 3",
+            "documents": []
+        },
+        {
+            "id": "5",
+            "section": "top-bar",
+            "key": "top-bar-menu-4",
+            "content": "menu 4",
+            "documents": []
+        }
+    ],
+    "our-program": [
+        {
+            "id": "1", 
+            "section": "our-program",
+            "key": "our-program-title",
+            "content": "Program",
+            "documents": []
+        },
+        {
+            "id": "2",
+            "section": "our-program",
+            "key": "our-program-content-title-1",
+            "content": "Entrepreneur in Residence",
+            "documents": []
+        },
+        {
+            "id": "3",
+            "section": "our-program",
+            "key": "our-program-content-body-1",
+            "content": "Program bantuan kewirausahaan bagi anak muda pemilik bisnis yang termasuk ke dalam kelompok penerima zakat. Bantuan berupa alat produksi dan pelatihan cara mengelola bisnis",
+            "documents": []
+        },
+        {
+            "id": "4",
+            "section": "our-program",
+            "key": "our-program-content-title-2",
+            "content": "Student Fellowship",
+            "documents": []
+        },
+        {
+            "id": "5",
+            "section": "our-program",
+            "key": "our-program-content-body-2",
+            "content": "Program bantuan finansial (SPP & biaya hidup) dan pengembangan karir bagi mahasiswa yang masuk ke dalam kategori penerima zakat. Program berjalan selama 10 bulan dengan pelatihan karir komprehensif sesuai dengan minat karir masing-masing penerima beasiswa sebelum memasuki dunia kerja setelah lulus kuliah.",
+            "documents": []
+        },
+        {
+            "id": "6",
+            "section": "our-program",
+            "key": "our-program-content-title-3",
+            "content": "Tech Fellowship",
+            "documents": []
+        },
+        {
+            "id": "7",
+            "section": "our-program",
+            "key": "our-program-content-body-3",
+            "content": "Program kerjasama dengan Hacktiv8 untuk menyediakan pengembangan skill digital melalui fullstack java script bootcamp. Program berjalan selama 12 bulan – 6 bulan pelatihan dan 6 bulan pencarian kerja.",
+            "documents": []
+        }
+    ]
+}
